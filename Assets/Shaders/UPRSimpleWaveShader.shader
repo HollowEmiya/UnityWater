@@ -15,7 +15,7 @@ Shader "Water/UPRSimpleWaveShader"
     {
         Tags
         {
-            "RenderPipeline"="UniversalPipline"
+            "RenderPipeline"="UniversalPipeline"
             "Queue"="Geometry"
             "RenderType"="Opaque"
         }
