@@ -31,8 +31,9 @@ Material:
     m_Ints: []
     m_Floats:
     - _DepthMaxDistance: 1.45
+    - _FoamDistance: 0.06
     - _SurfaceNoiseAmount: 0.18
-    - _SurfaceNoiseCutoff: 0.331
+    - _SurfaceNoiseCutoff: 0.718
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _DepthGradientDeep: {r: 0.086, g: 0.407, b: 1, a: 0.749}

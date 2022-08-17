@@ -3,11 +3,12 @@ Shader "Water/ToneWaterShader"
     Properties
     {
         // _MainTex ("Texture", 2D) = "white" {}
-        _SurfaceNoiseCutoff("Surface Noise Cutoff", Range(0,1)) = 0.4
-        _SurfaceNoise ("Surface Noise", 2D) = "white" {}
         _DepthGradientShallow ("Depth Gradient Shallow", Color) = (0.325, 0.807, 0.971, 0.725)
         _DepthGradientDeep ("Depth Gradient Deep", Color) = (0.086, 0.407, 1, 0.749)
         _DepthMaxDistance ("Depth Maximum Distance", Float) = 1.0
+        _SurfaceNoiseCutoff("Surface Noise Cutoff", Range(0,1)) = 0.4
+        _SurfaceNoise ("Surface Noise", 2D) = "white" {}
+        _FoamDistance ("Foam Distance", Float) = 0.2
     }
     SubShader
     {
@@ -15,7 +16,8 @@ Shader "Water/ToneWaterShader"
         {
             "RenderPipeline"="UniversalRenderPipeline"
             //"RenderPipeline"="UniversalPipeline"softxm;
-            "Queue"="Geometry"
+            // y因为我们使用了CameraDepth所以要注意RenderQueue要大于2500
+            "Queue"="Geometry+600"
             "RenderType"="Opaque"
         }
 
@@ -45,6 +47,7 @@ Shader "Water/ToneWaterShader"
             float4 _DepthGradientDeep;
             float _DepthMaxDistance;
             float _SurfaceNoiseCutoff;
+            float _FoamDistance;
 
             struct appdata
             {
@@ -93,8 +96,13 @@ Shader "Water/ToneWaterShader"
 
                 float waterDepthDifference01 = saturate(depthDifference / _DepthMaxDistance);
                 float4 waterColor = lerp(_DepthGradientShallow, _DepthGradientDeep, waterDepthDifference01);
+                
+                // distance is larger, cut off is more strict
+                float foamDepthDifference01 = saturate(depthDifference / _FoamDistance);
+                float surfaceNoiseCutoff = foamDepthDifference01 * _SurfaceNoiseCutoff;
+                float surfaceNoiseSample = SAMPLE_TEXTURE2D(_SurfaceNoise,sampler_SurfaceNoise,i.noiseUV).r > surfaceNoiseCutoff ? 1 : 0;
 
-                float surfaceNoiseSample = SAMPLE_TEXTURE2D(_SurfaceNoise,sampler_SurfaceNoise,i.noiseUV).r > _SurfaceNoiseCutoff ? 0 : 1;
+                
 
                 return waterColor+surfaceNoiseSample;
             }
