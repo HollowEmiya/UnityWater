@@ -40,7 +40,7 @@ Material:
     - _FoamMinDistance: 0.02
     - _SurfaceDistortionAmount: 0.516
     - _SurfaceNoiseAmount: 0.18
-    - _SurfaceNoiseCutoff: 0.723
+    - _SurfaceNoiseCutoff: 0.708
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _DepthGradientDeep: {r: 0.086, g: 0.407, b: 1, a: 0.78039217}
