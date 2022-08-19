@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class CameraNormalsTexture : MonoBehaviour
 {
     [SerializeField]
     Shader normalsShader;
@@ -25,11 +25,5 @@ public class NewBehaviourScript : MonoBehaviour
         normalCamera.targetTexture = renderTexture;
         normalCamera.SetReplacementShader(normalsShader, "RenderType");
         normalCamera.depth = thisCamera.depth - 1;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
