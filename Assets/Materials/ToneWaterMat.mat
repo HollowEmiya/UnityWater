@@ -38,16 +38,16 @@ Material:
     - _FoamDistance: 0.03
     - _FoamMaxDistance: 0.8
     - _FoamMinDistance: 0.02
-    - _SurfaceDistortionAmount: 0.516
+    - _SurfaceDistortionAmount: 0.601
     - _SurfaceNoiseAmount: 0.18
-    - _SurfaceNoiseCutoff: 0.708
+    - _SurfaceNoiseCutoff: 0.637
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _DepthGradientDeep: {r: 0.086, g: 0.407, b: 1, a: 0.78039217}
     - _DepthGradientShallow: {r: 0.325, g: 0.807, b: 0.971, a: 0.44313726}
     - _DepthGradienyDeep: {r: 0.086, g: 0.407, b: 1, a: 0.749}
     - _FoamColor: {r: 0.75294125, g: 0.9803922, b: 0.94117653, a: 1}
-    - _SurfaceNoiseScroll: {r: 0.01, g: 0.02, b: 0, a: 0}
+    - _SurfaceNoiseScroll: {r: 0.004, g: 0.008, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7105105517127934803
 MonoBehaviour:
